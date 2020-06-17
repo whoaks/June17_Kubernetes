@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: rc1
+
+spec:
+  replicas: 3
+  selector:
+    env: the_wall
+    dc: north
+    app: server
+  template:
+    metadata:
+      name: aks
+      labels:
+        env: the_wall
+        dc: north
+        app: server
+    spec:
+      containers:
+      - name: "con1"
+        image: "vimal13/apache-webserver-php"
